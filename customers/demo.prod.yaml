@@ -1,0 +1,151 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: partner
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-databases-flow-partner-demo
+  labels:
+    type: local
+spec:
+  storageClassName: default
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/demo/databases-flow"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-flow-partner-demo
+  labels:
+    type: local
+spec:
+  storageClassName: default
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/demo/flow"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-databases-flow-partner-demo
+  namespace: partner
+spec:
+  storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-flow-partner-demo
+  namespace: partner
+spec:
+  storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whometa-flow-partner-demo
+  namespace: partner
+  labels:
+    app: whometa-flow-partner-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whometa-flow-partner-demo
+  template:
+    metadata:
+      labels:
+        app: whometa-flow-partner-demo
+    spec:
+      containers:
+      - name: whometa-flow-partner-demo
+        image: wmacs.azurecr.io/whometa/whometa-flow:latest # Passen Sie das Docker-Image an
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - mountPath: /www/.src/databases
+          name: databases-storage
+        - mountPath: /www/.src/flowstream
+          name: flow-storage
+      volumes:
+      - name: databases-storage
+        persistentVolumeClaim:
+          claimName: pvc-databases-flow-partner-demo
+      - name: flow-storage
+        persistentVolumeClaim:
+          claimName: pvc-flow-partner-demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whometa-flow-partner-demo-service
+  namespace: partner
+  labels:
+    app: whometa-flow-partner-demo
+spec:
+  selector:
+    app: whometa-flow-partner-demo
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+  type: ClusterIP
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: whometa-flow-partner-demo-cert
+  namespace: partner
+spec:
+  secretName: whometa-flow-partner-demo-tls
+  issuerRef:
+    name: letsencrypt-azure
+    kind: ClusterIssuer
+  commonName: demo.partner.whometa.eu
+  dnsNames:
+  - demo.partner.whometa.eu
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: whometa-flow-partner-demo-ingress
+  namespace: partner
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-azure
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - demo.partner.whometa.eu
+    secretName: whometa-flow-partner-demo-tls
+  rules:
+  - host: demo.partner.whometa.eu
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: whometa-flow-partner-demo-service
+            port:
+              number: 80

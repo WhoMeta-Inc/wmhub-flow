@@ -1,0 +1,151 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: partner
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-databases-flow-partner-runicbytes
+  labels:
+    type: local
+spec:
+  storageClassName: default
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/runicbytes/databases-flow"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-flow-partner-runicbytes
+  labels:
+    type: local
+spec:
+  storageClassName: default
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/runicbytes/flow"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-databases-flow-partner-runicbytes
+  namespace: partner
+spec:
+  storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-flow-partner-runicbytes
+  namespace: partner
+spec:
+  storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whometa-flow-partner-runicbytes
+  namespace: partner
+  labels:
+    app: whometa-flow-partner-runicbytes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whometa-flow-partner-runicbytes
+  template:
+    metadata:
+      labels:
+        app: whometa-flow-partner-runicbytes
+    spec:
+      containers:
+      - name: whometa-flow-partner-runicbytes
+        image: wmacs.azurecr.io/whometa/whometa-flow:latest # Passen Sie das Docker-Image an
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - mountPath: /www/.src/databases
+          name: databases-storage
+        - mountPath: /www/.src/flowstream
+          name: flow-storage
+      volumes:
+      - name: databases-storage
+        persistentVolumeClaim:
+          claimName: pvc-databases-flow-partner-runicbytes
+      - name: flow-storage
+        persistentVolumeClaim:
+          claimName: pvc-flow-partner-runicbytes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whometa-flow-partner-runicbytes-service
+  namespace: partner
+  labels:
+    app: whometa-flow-partner-runicbytes
+spec:
+  selector:
+    app: whometa-flow-partner-runicbytes
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+  type: ClusterIP
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: whometa-flow-partner-runicbytes-cert
+  namespace: partner
+spec:
+  secretName: whometa-flow-partner-runicbytes-tls
+  issuerRef:
+    name: letsencrypt-azure
+    kind: ClusterIssuer
+  commonName: runicbytes.partner.whometa.eu
+  dnsNames:
+  - runicbytes.partner.whometa.eu
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: whometa-flow-partner-runicbytes-ingress
+  namespace: partner
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-azure
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - runicbytes.partner.whometa.eu
+    secretName: whometa-flow-partner-runicbytes-tls
+  rules:
+  - host: runicbytes.partner.whometa.eu
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: whometa-flow-partner-runicbytes-service
+            port:
+              number: 80

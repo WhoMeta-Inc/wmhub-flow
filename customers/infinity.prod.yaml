@@ -1,0 +1,151 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: partner
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-databases-flow-partner-infinityshare
+  labels:
+    type: local
+spec:
+  storageClassName: default
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/infinityshare/databases-flow"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-flow-partner-infinityshare
+  labels:
+    type: local
+spec:
+  storageClassName: default
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/infinityshare/flow"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-databases-flow-partner-infinityshare
+  namespace: partner
+spec:
+  storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-flow-partner-infinityshare
+  namespace: partner
+spec:
+  storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whometa-flow-partner-infinityshare
+  namespace: partner
+  labels:
+    app: whometa-flow-partner-infinityshare
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whometa-flow-partner-infinityshare
+  template:
+    metadata:
+      labels:
+        app: whometa-flow-partner-infinityshare
+    spec:
+      containers:
+      - name: whometa-flow-partner-infinityshare
+        image: wmacs.azurecr.io/whometa/whometa-flow:latest # Passen Sie das Docker-Image an
+        ports:
+        - containerPort: 8000
+        volumeMounts:
+        - mountPath: /www/.src/databases
+          name: databases-storage
+        - mountPath: /www/.src/flowstream
+          name: flow-storage
+      volumes:
+      - name: databases-storage
+        persistentVolumeClaim:
+          claimName: pvc-databases-flow-partner-infinityshare
+      - name: flow-storage
+        persistentVolumeClaim:
+          claimName: pvc-flow-partner-infinityshare
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whometa-flow-partner-infinityshare-service
+  namespace: partner
+  labels:
+    app: whometa-flow-partner-infinityshare
+spec:
+  selector:
+    app: whometa-flow-partner-infinityshare
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+  type: ClusterIP
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: whometa-flow-partner-infinityshare-cert
+  namespace: partner
+spec:
+  secretName: whometa-flow-partner-infinityshare-tls
+  issuerRef:
+    name: letsencrypt-azure
+    kind: ClusterIssuer
+  commonName: infinityshare.partner.whometa.eu
+  dnsNames:
+  - infinityshare.partner.whometa.eu
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: whometa-flow-partner-infinityshare-ingress
+  namespace: partner
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-azure
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - infinityshare.partner.whometa.eu
+    secretName: whometa-flow-partner-infinityshare-tls
+  rules:
+  - host: infinityshare.partner.whometa.eu
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: whometa-flow-partner-infinityshare-service
+            port:
+              number: 80
