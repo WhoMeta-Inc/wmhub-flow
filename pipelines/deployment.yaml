@@ -67,7 +67,7 @@ metadata:
   labels:
     app: whometa-flow
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: whometa-flow
@@ -102,7 +102,7 @@ metadata:
   labels:
     app: whometa-flow-root
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: whometa-flow-root
