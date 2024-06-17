@@ -25,6 +25,18 @@ spec:
         image: wmacs.azurecr.io/whometa/whometa-flow:latest # Passen Sie das Docker-Image an
         ports:
         - containerPort: 8000
+        volumeMounts:
+        - mountPath: /www/.src/databases
+          name: databases-storage
+        - mountPath: /www/.src/flowstream
+          name: flow-storage
+      volumes:
+      - name: databases-storage
+        persistentVolumeClaim:
+          claimName: pvc-databases
+      - name: flow-storage
+        persistentVolumeClaim:
+          claimName: pvc-flow
 ---
 apiVersion: v1
 kind: Service
@@ -81,7 +93,6 @@ spec:
             name: whometa-flow-service
             port:
               number: 80
-              paths:
       - path: /
         pathType: Prefix
         backend:
