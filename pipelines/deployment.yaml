@@ -81,3 +81,11 @@ spec:
             name: whometa-flow-service
             port:
               number: 80
+              paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: whometa-flow-service
+            port:
+              number: 80
