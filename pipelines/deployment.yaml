@@ -6,7 +6,7 @@ metadata:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-databases
+  name: pv-databases-flow
   labels:
     type: local
 spec:
@@ -16,7 +16,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data/databases"
+    path: "/mnt/data/databases-flow"
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -36,7 +36,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-databases
+  name: pvc-databases-flow
   namespace: prod
 spec:
   storageClassName: manual
@@ -89,33 +89,10 @@ spec:
       volumes:
       - name: databases-storage
         persistentVolumeClaim:
-          claimName: pvc-databases
+          claimName: pvc-databases-flow
       - name: flow-storage
         persistentVolumeClaim:
           claimName: pvc-flow
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: whometa-flow-root
-  namespace: prod
-  labels:
-    app: whometa-flow-root
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: whometa-flow-root
-  template:
-    metadata:
-      labels:
-        app: whometa-flow-root
-    spec:
-      containers:
-      - name: whometa-flow-root
-        image: wmacs.azurecr.io/whometa/whometa-flow-root:latest # Passen Sie das Docker-Image an
-        ports:
-        - containerPort: 8000
 ---
 apiVersion: v1
 kind: Service
@@ -127,22 +104,6 @@ metadata:
 spec:
   selector:
     app: whometa-flow
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8000
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: whometa-flow-root-service
-  namespace: prod
-  labels:
-    app: whometa-flow-root
-spec:
-  selector:
-    app: whometa-flow-root
   ports:
   - protocol: TCP
     port: 80
@@ -181,17 +142,10 @@ spec:
   - host: flow.whometa.eu
     http:
       paths:
-      - path: /core
-        pathType: Prefix
-        backend:
-          service:
-            name: whometa-flow-service
-            port:
-              number: 80
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: whometa-flow-root-service
+            name: whometa-flow-service
             port:
               number: 80
