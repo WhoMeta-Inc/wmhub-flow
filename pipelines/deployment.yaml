@@ -3,6 +3,62 @@ kind: Namespace
 metadata:
   name: prod
 ---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-databases
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/databases"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-flow
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/flow"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-databases
+  namespace: prod
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-flow
+  namespace: prod
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -11,7 +67,7 @@ metadata:
   labels:
     app: whometa-flow
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: whometa-flow
@@ -46,7 +102,7 @@ metadata:
   labels:
     app: whometa-flow-root
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: whometa-flow-root
