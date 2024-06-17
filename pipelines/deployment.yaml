@@ -42,6 +42,20 @@ spec:
     targetPort: 8000
   type: ClusterIP
 ---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: whometa-flow-cert
+  namespace: prod
+spec:
+  secretName: whometa-flow-tls
+  issuerRef:
+    name: letsencrypt-azure
+    kind: ClusterIssuer
+  commonName: flow.whometa.eu
+  dnsNames:
+  - flow.whometa.eu
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -49,7 +63,12 @@ metadata:
   namespace: prod
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-azure
 spec:
+  tls:
+  - hosts:
+    - flow.whometa.eu
+    secretName: whometa-flow-tls
   rules:
   - host: flow.whometa.eu
     http:
