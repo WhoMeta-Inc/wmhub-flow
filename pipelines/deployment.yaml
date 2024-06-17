@@ -113,7 +113,7 @@ spec:
     spec:
       containers:
       - name: whometa-flow-root
-        image: wmacs.azurecr.io/whometa/whometa-flow:latest # Passen Sie das Docker-Image an
+        image: wmacs.azurecr.io/whometa/whometa-flow-root:latest # Passen Sie das Docker-Image an
         ports:
         - containerPort: 8000
 ---
