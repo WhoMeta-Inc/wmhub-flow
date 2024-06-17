@@ -11,7 +11,7 @@ metadata:
   labels:
     app: whometa-flow
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: whometa-flow
@@ -87,13 +87,6 @@ spec:
     http:
       paths:
       - path: /core
-        pathType: Prefix
-        backend:
-          service:
-            name: whometa-flow-service
-            port:
-              number: 80
-      - path: /
         pathType: Prefix
         backend:
           service:
