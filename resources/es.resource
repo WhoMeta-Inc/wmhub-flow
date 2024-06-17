@@ -1,4 +1,4 @@
-// Total.js Flow translation (es)
+// WhoMeta Flow translation (es)
 // Created:  09/02/2023 - 20:23
 
 T102cmcz                 : Credenciales no válidos
@@ -20,7 +20,7 @@ T12wv59s                 : APROBADO
 T1375xdy                 : Origen
 T13f1ocw                 : Aprobado
 T13gs4nu                 : Documentación
-T13mqxke                 : FlowStream
+T13mqxke                 : Flow
 T13xsfh                  : Vacio
 T14f0atq                 : Leeme
 T14f871g                 : Eliminar
@@ -72,9 +72,9 @@ T1cq6x                   : Icono
 T1ctxe68                 : ¿Deseas eliminar el nodo seleccionado?
 T1d4ajlk                 : Copia de seguridad del archivo de la base de datos de Flow después de cada cambio
 T1d4k3lz                 : ¿Deseas eliminar la fuente seleccionada?
-T1d741gt                 : Añadir FlowStream
+T1d741gt                 : Añadir Flow
 T1daowwl                 : La configuración se ha copiado copiada en el portapapeles.
-T1dsh7y0                 : El FlowStream ha sido copiado en el portapapeles
+T1dsh7y0                 : El Flow ha sido copiado en el portapapeles
 T1e6vuag                 : No hay ninguna fuente externa TMS
 T1eo1                    : Añadir
 T1ew5j9l                 : Importar Flow
@@ -115,13 +115,13 @@ T1o0d5xf                 : Superposición con <span class="link">{1}</span> usad
 T1oaetr                  : Pegar configuración
 T1og9dv1                 : Importar finalizado
 T1olj4zg                 : La aplicación está diseñada para funcionar con Total.js OpenPlatform. Primero, debes obtener los tokens del formulario de registro de la aplicación en la instancia de OpenPlatform.
-T1omuq66                 : Bienvenido a <b>Total.js Flow Designer</b>. Con el diseñador, puedes crear tu flujo.
+T1omuq66                 : Bienvenido a <b>WhoMeta Flow Studio</b>. Con el diseñador, puedes crear tu flujo.
 T1onbe42                 : Actualizar fuente
 T1p11zaa                 : Uso de memoria
 T1p6zhss                 : Exportar como un componente
 T1pob7fy                 : Reiniciar estadísticas
 T1pt7ios                 : Insertar color
-T1q1rhiy                 : Información de FlowStream
+T1q1rhiy                 : Información de Flow
 T1q2cqbs                 : Entrar
 T1q2fat3                 : Memoria Max.
 T1q3e35z                 : El componente ha sido copiado en el portapapeles
@@ -137,14 +137,14 @@ T1t6vkb6                 : Fuentes TMS
 T1to56l6                 : Añadir fuente
 T1uc8um3                 : Dirección URL para soporte
 T1ufwq7i                 : Generar token
-T1vr7uqj                 : Todos los FlowStream existentes serán reiniciados automaticamente después de cambiar el entorno.
+T1vr7uqj                 : Todos los Flow existentes serán reiniciados automaticamente después de cambiar el entorno.
 T1vvx967                 : Soporte
 T1w1qbfe                 : Únete a Total.js Enterprise y descarga componentes premium de código abierto y otras partes de forma gratuita.
-T1wcjym6                 : ¿Deseas actualizar el bundle de Total.js Flow? Este es un paso peligroso.
-T1wznvzc                 : Por favor usa el menú "Exportar" para copiar entre instancias de FlowStream.
+T1wcjym6                 : ¿Deseas actualizar el bundle de WhoMeta Flow? Este es un paso peligroso.
+T1wznvzc                 : Por favor usa el menú "Exportar" para copiar entre instancias de Flow.
 T1x85fqx                 : Crear componente
 T1xsdwik                 : TEXTO A TRADUCIR
-T1y9fptk                 : ¿Deseas eliminar el FlowStream seleccionado "{0}"?
+T1y9fptk                 : ¿Deseas eliminar el Flow seleccionado "{0}"?
 T1ymf76w                 : Formato markdown
 T1yv4okt                 : Limpiar componentes sin uso
 T21qz3r                  : Nodos activos
@@ -152,7 +152,7 @@ T295mkw                  : Repite la nueva contraseña
 T2izjzj                  : Establece una nota
 T2mhfqr                  : Para añadir una variables es necesario presionar la tecla <b>ENTER</b>
 T2p7d47                  : RECARGAR
-T3ex275                  : FlowStream "{0}" esta reiniciandose ...
+T3ex275                  : Flow "{0}" esta reiniciandose ...
 T3i77bj                  : Crea un número ilimitado de Flows y automatiza tus dispositivos, procesos o flujos de trabajo de IoT.
 T4ie36z                  : Mensajes por minuto
 T55rcxp                  : Reiniciar configuración.
@@ -175,10 +175,10 @@ Taxpbv2                  : Background
 Tbupqhp                  : Token de acceso
 Tbzkrms                  : Opcional, escribe el token de seguridad
 Tc9wkjs                  : Token de solicitud
-Tcrblv6                  : Enrutará todas las solicitudes entrantes a este FlowStream.
+Tcrblv6                  : Enrutará todas las solicitudes entrantes a este Flow.
 Td4ftt4                  : Repositorio oficial GitHub:
 Tdsoglh                  : El límite máximo de memoria debe definirse en megabytes. Gestión de memoria para el proceso del worker. Cero (<b>0</b>) utilizará memoria limite automática.
-Tdtifjp                  : ¿Deseas reiniciar el FlowStream seleccionado "{0}"?
+Tdtifjp                  : ¿Deseas reiniciar el Flow seleccionado "{0}"?
 Te0uspu                  : Escribe una nueva contraseña
 Tffa1i1                  : Datos no válidos en el portapapeles
 Tfgf1dd                  : Copiar en el formulario
@@ -186,15 +186,15 @@ Tfo1axt                  : Alejar
 Tfquld6                  : Advertir sobre la instalación de componentes
 Tg8p2lz                  : Pendiente
 Tgmsjmt                  : componentes seleccionados
-Th60oo5                  : ¿Deseas reiniciar este proceso de FlowStream?
+Th60oo5                  : ¿Deseas reiniciar este proceso de Flow?
 Th75a7v                  : El flow exportado se importará como componente "{0}".
 Thoziru                  : Buscar aplicaciones
 Thricot                  : Componentes principales
 Thuap0r                  : Referencia
-Thuo6tp                  : Powered by <b>Total.js</b>
+Thuo6tp                  : Powered by <b>WhoMeta Inc</b>
 Thzt98r                  : Diseñador
 Ti08av                   : No se ha instalado ningún componente Flow
-Tibjq9e                  : Gracias por usar <b>Total.js Flow</b>.
+Tibjq9e                  : Gracias por usar <b>WhoMeta Flow</b>.
 Tifouz6                  : Crear Flow
 Tj5ynid                  : Dirección URL a la lista de componentes
 Tjoxf9d                  : Enterprise
@@ -205,7 +205,7 @@ Tl22vn                   : Las credenciales se han cambiado correctamente
 Tl71ry3                  : Contraseña
 Tle39v0                  : Cambiar credenciales
 Tliwp51                  : Respuesta de contraseña
-Tllczf7                  : ¿Deseas crear un componente desde este FlowStream?
+Tllczf7                  : ¿Deseas crear un componente desde este Flow?
 Tlt3x10                  : ¿Deseas limpiar el Flow actual?
 Tmbeadb                  : Opcional, puedes escribir la dirección URL para soporte
 Tn70lx                   : Mensajes pendientes
@@ -219,14 +219,14 @@ Tooknmw                  : Descargar
 Tosmo8z                  : Ajustes
 Towr78g                  : Insertar icono
 Toytlab                  : Convertir a HEX
-Tp5payj                  : Bienvenido a la interfaz de programación visual de JavaScript llamada <b>Total.js Flow</b>.
+Tp5payj                  : Bienvenido a la interfaz de programación visual de JavaScript llamada <b>WhoMeta Flow</b>.
 Tppk22a                  : Acercar
 Tpqn59v                  : ¿Deseas aplicar todas las nuevas actualizaciones ({0}x)?
 Tq5uz1v                  : Entorno
 Tqecduk                  : Copiar sin etiquetas
 Tqpm9cg                  : Habilitar el modo oscuro
 Trs5jhq                  : Se cerrará la sesión automáticamente si ingresa tokens para OpenPlatform.
-Trttn6d                  : Escribe el nombre de FlowStream
+Trttn6d                  : Escribe el nombre de Flow
 Ts1qo6i                  : Actualizar todo
 Ts9pnt8                  : Primero, debes instalar algunos componentes de Flow o crear los tuyos propios en tiempo real.
 Tscs5q                   : Descargar componentes
@@ -235,8 +235,8 @@ Tt61sak                  : Limpiar cache CDN
 Tugxn5o                  : ADVERTENCIA
 Tujlvns                  : Resultados de la prueba
 Tuqw1j5                  : Descargar plantillas
-Tur71fp                  : Actualizar FlowStream
-Tux2ftv                  : Esta aplicación Total.js Flow no contiene ningun Flow
+Tur71fp                  : Actualizar Flow
+Tux2ftv                  : Esta aplicación WhoMeta Flow no contiene ningun Flow
 Tvs07dj                  : Variables
 Tvtt68k                  : A continuación, arrastra y suelta los componentes en el Flujo y únelos entre sí..
 Tvwxchm                  : Token de respuesta

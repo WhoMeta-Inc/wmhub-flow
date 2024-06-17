@@ -81,7 +81,7 @@ header label span { display: block; color: #999; font-size: 11px; font-weight: n
 .toolbar label { height: 26px; line-height: 26px; float: left; font-size: 16px; font-weight: bold; }
 .toolbar button { outline: 0; background: #FFF; border: 1px solid #E0E0E0; border-left: 0; font-size: 11px; height: 26px; padding: 0 8px; color: #000; min-width: 80px; text-align: center; vertical-align: top; background-color: #FFF; line-height: 24px; float: left; text-align: center !important; }
 .toolbar button i { margin-right: 5px; }
-.toolbar button .ti-plus-circle, .toolbar button .ti-check-circle { color: #68B25B; }
+.toolbar button .ti-plus-circle, .toolbar button .ti-check-circle { color: #119CBC; }
 .toolbar button:first-child { border-left: 1px solid #E0E0E0; border-top-left-radius: var(--radius); border-bottom-left-radius: var(--radius); }
 .toolbar button:last-child { border-top-right-radius: var(--radius); border-bottom-right-radius: var(--radius); }
 .toolbar button:hover { border-color: #D0D0D0; }
@@ -156,7 +156,7 @@ header label span { display: block; color: #999; font-size: 11px; font-weight: n
 .message i { margin-right: 5px; }
 .message-error { border-color: #D63A32; color: #D63A32; }
 .message-alert { border-color: #DEBA31; color: #DEBA31; }
-.message-success { border-color: #68B25B; color: #68B25B; }
+.message-success { border-color: #119CBC; color: #119CBC; }
 
 .ui-parts-item iframe { overflow: hidden; width: 100%; height: 100%; border: 0; }
 
@@ -268,12 +268,12 @@ header label span { display: block; color: #999; font-size: 11px; font-weight: n
 .message i { margin-right: 5px; }
 .message-error { border-color: #D63A32; color: #A72C26; }
 .message-alert { border-color: #DEBA31; color: #8c7727; }
-.message-success { border-color: #68B25B; color: #4A7543; }
+.message-success { border-color: #119CBC; color: #4A7543; }
 
 .ui-dark .message { border-color: #666; color: #999; }
 .ui-dark .message-error { border-color: #D63A32; color: #DC7772; }
 .ui-dark .message-alert { border-color: #DEBA31; color: #D2BA62; }
-.ui-dark .message-success { border-color: #68B25B; color: #6DAD63; }
+.ui-dark .message-success { border-color: #119CBC; color: #6DAD63; }
 
 .appmenu { width: 65px; border-right: 1px solid #E0E0E0; float: left; padding: 5px 0 0; background-color: #FFF; color: #777; }
 .appmenu .exec { height: 34px; width: 34px; font-size: 18px; line-height: 34px; text-align: center; margin: 11px 15px 0 15px; cursor: pointer; border-radius: var(--radius); }

@@ -1,4 +1,4 @@
-name                        : Total.js Flow v10
+name                        : WhoMeta Hub
 flowstream_worker           : fork
 
 cookie          (generate)  : 6
@@ -10,13 +10,13 @@ $customtitles               : true
 // directory                   : /absolute/path/to/flow/database/
 
 // Disables: Worker/Fork
-// flowstream_worker           : false
+// Flow_worker           : false
 
 // Replaces WorkerThread for the ChildProcess/Fork
-// flowstream_worker           : fork
+// Flow_worker           : fork
 
 // Memory size for forked processes (in MB)
-// flowstream_memory           : 4069
+// Flow_memory           : 4069
 
 // $root                       : subdomain
 

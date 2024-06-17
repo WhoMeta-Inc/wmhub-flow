@@ -27,7 +27,7 @@ T1w75t5n       : Dosyaları Sürükleyin ve Bırakın
 Tygvmh7        : Hatalar
 
 // views/index.html
-T1s66440       : Sürükle ve Bırak FlowStream
+T1s66440       : Sürükle ve Bırak Flow
 T14gxd1        : Akışlar
 Tt61sak        : CDN önbelleği temizle
 T133tcvy       : Geçersiz dosya içeriği
@@ -35,18 +35,18 @@ T1hdg4         : Oynat
 T1qonvrk       : Yeni sekmede aç
 Tni3fg         : Panoya kopyala
 Tnhkebv        : JSON olarak kopyala
-Tdtifjp        : Seçili FlowStream "{0}"'yi yeniden başlatmak istediğinizden emin misiniz?
-T3ex275        : FlowStream "{0}" yeniden başlatılıyor...
+Tdtifjp        : Seçili Flow "{0}"'yi yeniden başlatmak istediğinizden emin misiniz?
+T3ex275        : Flow "{0}" yeniden başlatılıyor...
 T8cumeu        : Değişkenler başarıyla değiştirildi.
-T1y9fptk       : Seçili FlowStream "{0}"'yi silmek istediğinizden emin misiniz?
+T1y9fptk       : Seçili Flow "{0}"'yi silmek istediğinizden emin misiniz?
 T1jl4rdo       : Yeni oluştur
-Tbd9b55        : FlowStream İçe Aktar
+Tbd9b55        : Flow İçe Aktar
 Tuqw1j5        : Şablonları İndir
 T1vvx967       : Destek
 T1goptw9       : Paketi Güncelle
 T66xbij        : Çıkış Yap
 Tugxn5o        : UYARI
-T1wcjym6       : Total.js Flow paketini güncellemek istediğinizden emin misiniz? Bu tehlikeli bir adımdır.
+T1wcjym6       : WhoMeta Flow paketini güncellemek istediğinizden emin misiniz? Bu tehlikeli bir adımdır.
 Tofwsip        : Paketi Yükle
 T1fqp3uj       : UI bileşenlerinin CDN önbelleğini temizlemek istediğinizden emin misiniz?
 T1ixs32h       : CDN önbelleği başarıyla temizlendi
@@ -64,7 +64,7 @@ T19rys6        : Duraklat
 T12tjct        : Kopyala
 T19oinzj       : Yeniden Başlat
 Tooojl2        : Topluluğa Yayınla
-T1dsh7y0       : FlowStream panoya kopyalandı
+T1dsh7y0       : Flow panoya kopyalandı
 T12tbn1        : Temizle
 
 // views/index.html, public/forms/sources.html, public/parts/flow.html
@@ -111,7 +111,7 @@ Tzs3c11        : İÇE AKTAR
 
 // public/forms/components.html
 Ts1qo6i        : Tümünü Güncelle
-T16f67gs       : Total.js Platform'u daha iyi hale getirin.
+T16f67gs       : WhoMeta Hub'u daha iyi hale getirin.
 T1w1qbfe       : Total.js Enterprise'a katılın ve premium açık kaynak bileşenleri ve diğer parçaları ücretsiz indirin.
 Tfquld6        : Bileşen kurulumu hakkında uyarı ver
 T8bdtct        : Eylemler
@@ -151,7 +151,7 @@ T19s4i         : Tamamlandı
 T1fytv         : Sonraki
 
 // public/forms/new.html
-T1omuq66       : <b>Total.js Flow Tasarımcısı</b>'na hoş geldiniz. Tasarımcı ile akış tasarımınızı oluşturabilirsiniz.
+T1omuq66       : <b>WhoMeta Flow Tasarımcısı</b>'na hoş geldiniz. Tasarımcı ile akış tasarımınızı oluşturabilirsiniz.
 Ts9pnt8        : İlk olarak, gerçek zamanlı olarak bazı Akış bileşenleri yüklemeniz veya kendi bileşenlerinizi oluşturmanız gerekmektedir.
 Tvtt68k        : Ardından bileşenleri sürükleyip bırakarak Akış'a ekleyin ve birbirlerine bağlayın.
 
@@ -174,9 +174,9 @@ T9sze77        : Şifreler eşleşmiyor.
 Tl22vn         : Kimlik bilgileri başarıyla değiştirildi
 
 // public/forms/publish.html
-Titv14c        : İçeriğinizi Total.js Flow topluluğuna yayınlama ilginiz için teşekkür ederiz. Ekibimiz inceledikten sonra, her şey yolundaysa FlowStream'unuzu Flow topluluğundaki herkese indirilebilir hale getirebiliriz.
+Titv14c        : İçeriğinizi WhoMeta Flow topluluğuna yayınlama ilginiz için teşekkür ederiz. Ekibimiz inceledikten sonra, her şey yolundaysa Flow'unuzu Flow topluluğundaki herkese indirilebilir hale getirebiliriz.
 T17bmnl3       : Mesaj
-T18yn41r       : FlowStream'u Yayınla
+T18yn41r       : Flow'u Yayınla
 T1wo7zf0       : Bileşeni Yayınla
 Thce6b3        : <b>Teşekkürler.</b> Yayınlama hakkında size yakında ulaşacağız.
 
@@ -192,7 +192,7 @@ Td51497        : Kod incelemesi
 // public/forms/review.html
 Tda7wop        : Kodunuz en kısa sürede profesyonel ekibimiz tarafından incelenecektir.
 T1t6mbba       : Total.js API belirteci
-Tqy364x        : Kod incelemesi, Total.js Platformunun yazarları tarafından sunulan ücretli bir hizmettir.
+Tqy364x        : Kod incelemesi, WhoMeta Hubunun yazarları tarafından sunulan ücretli bir hizmettir.
 Tfuwsv         : Daha fazla oku.
 T11rwri0       : Adınız
 T1apzvd6       : Bileşen kaynak kodunuz incelenecektir.
@@ -202,7 +202,7 @@ T1gxh          : Geliştirme
 T1jsmq         : Test
 T1hi7r         : Prod
 T176daig       : ÖNEMLİ:
-T1vr7uqj       : Mevcut tüm FlowStream'lar, ortam değiştirildikten sonra otomatik olarak yeniden başlatılacaktır.
+T1vr7uqj       : Mevcut tüm Flow'lar, ortam değiştirildikten sonra otomatik olarak yeniden başlatılacaktır.
 Thricot        : Ana bileşenler
 T6clmkc        : Değiştirmenizi tavsiye etmiyoruz
 Tj5ynid        : Bileşenler listesi için URL adresi
@@ -242,7 +242,7 @@ T1e6vuag       : Dış TMS kaynağınız yok
 T1d4k3lz       : Seçilen kaynağı kaldırmak istediğinizden emin misiniz?
 
 // public/forms/stream.html
-Trttn6d        : FlowStream adını girin
+Trttn6d        : Flow adını girin
 T1uc8um3       : Destek için URL adresi
 Tmbeadb        : İsteğe bağlı olarak URL adresini girin
 T13xsfh        : Boş
@@ -251,15 +251,15 @@ Thuap0r        : Referans
 T1cq6x         : Simgesi
 T10qvu3a       : /kullanıcılar/
 Tnacenb        : Proxy uç noktası
-Tcrblv6        : Tüm gelen istekleri bu FlowStream'a yönlendirecektir.
+Tcrblv6        : Tüm gelen istekleri bu Flow'a yönlendirecektir.
 T1t13lzd       : Mesaj verilerinin kopyalanmasını etkinleştir
-Tu18pq1        : Bu seçeneği devre dışı bırakarak FlowStream performansını iyileştirebilirsiniz çünkü değişimde mesaj verileri kopyalanmaz. Ancak diğer yandan nesne referansları ile sorun yaşayabilirsiniz.
+Tu18pq1        : Bu seçeneği devre dışı bırakarak Flow performansını iyileştirebilirsiniz çünkü değişimde mesaj verileri kopyalanmaz. Ancak diğer yandan nesne referansları ile sorun yaşayabilirsiniz.
 T1q2fat3       : Max. bellek
 Tdsoglh        : Maksimum bellek sınırı megabayt cinsinden tanımlanmalıdır. Bir işlem süreci için bellek yönetimi. Sıfır (<b>0</b>) otomatik bellek sınırını ifade eder.
 T7rbnir        : Ek bilgi
 T1ymf76w       : Markdown biçimi
-Tur71fp        : FlowStream'u güncelle
-T1d741gt       : FlowStream ekle
+Tur71fp        : Flow'u güncelle
+T1d741gt       : Flow ekle
 T6swhq6        : Geçersiz uç nokta
 T1o0d5xf       : <span class="link">{1}</span> tarafından kullanılan <b>{2}</b> ile çakışıyor
 
@@ -284,17 +284,17 @@ T2mhfqr        : Bir değişken girerseniz, onaylamak için <b>ENTER</b> tuşuna
 T6k3sr1        : Node.js sürümü
 T10qvqiz       : Total.js sürümü
 T16y1cim       : Çalışan
-T13mqxke       : FlowStream
+T13mqxke       : Flow
 T1873qv        : Proxy yolu
 T1375xdy       : Kaynak
 
 // public/forms/welcome.html
-Tp5payj        : <b>Total.js Flow</b> adı verilen JavaScript Görsel Programlama Arayüzü'ne hoş geldiniz.
+Tp5payj        : <b>WhoMeta Flow</b> adı verilen JavaScript Görsel Programlama Arayüzü'ne hoş geldiniz.
 T3i77bj        : Sınırsız sayıda Flow oluşturabilir ve IoT cihazlarınızı, işlemlerinizi veya iş akışlarınızı otomatik hale getirebilirsiniz.
-Tibjq9e        : <b>Total.js Flow</b> kullanımınız için teşekkür ederiz.
+Tibjq9e        : <b>WhoMeta Flow</b> kullanımınız için teşekkür ederiz.
 
 // public/panels/flow.html
-Tk8sgpz        : Yüklenmiş herhangi bir FlowStream bileşeni yok
+Tk8sgpz        : Yüklenmiş herhangi bir Flow bileşeni yok
 Thzt98r        : Tasarımcı
 
 // public/parts/component.html
@@ -312,8 +312,8 @@ T19579         : Kopyala
 // public/parts/flow.html
 T12vqq76       : Clipboard'a uç noktasını kopyala
 T17wxfuz       : Uç noktasını aç
-T17nzy4g       : Belgeler: Total.js Platform
-T1q1rhiy       : FlowStream bilgileri
+T17nzy4g       : Belgeler: WhoMeta Hub
+T1q1rhiy       : Flow bilgileri
 T117eq6        : UYGULA
 T1eo1          : Ekle
 T179lgs7       : Konsol
@@ -347,8 +347,8 @@ T1g5zs         : Yok
 T1q3e35z       : Bileşen panosuna kopyalandı
 T10341ij       : Kullanılabilir ayar yok
 T196e3ti       : Yapılandırma
-Tnu2zaa        : FlowStream, base64 biçimi olarak panoya kopyalandı
-Tllczf7        : Bu FlowStream'den bir bileşen oluşturmak istediğinizden emin misiniz?
+Tnu2zaa        : Flow, base64 biçimi olarak panoya kopyalandı
+Tllczf7        : Bu Flow'den bir bileşen oluşturmak istediğinizden emin misiniz?
 Tyk542c        : Dışa aktar
 T19yqvdz       : Mevcut Flow'u kaydetmeyi ve uygulamayı istediğinizden emin misiniz?
 T1qpwhc7       : Devam
@@ -364,7 +364,7 @@ T1yv4okt       : Kullanılmayan bileşenleri temizle
 Tx9q821        : İyi iş, temizlenecek bir şey yok
 T115jeyk       : Tüm kullanılmayan bileşenleri ({0}) temizlemek istediğinizden emin misiniz?
 T1037q6n       : Tamam, tüm kullanılmayan bileşenler kaldırıldı
-Th60oo5        : Bu FlowStream işlemi yeniden başlatmak istediğinizden emin misiniz?
+Th60oo5        : Bu Flow işlemi yeniden başlatmak istediğinizden emin misiniz?
 Tffa1i1        : Panodaki geçersiz veri
 T19ya89c       : Bileşen başarıyla içe aktarıldı
 Tjqcssf        : Sunucuya bağlanılıyor...
@@ -372,7 +372,7 @@ Ty15iz8        : Kaynak kodunu kopyala
 T17n1ctu       : Seçili "{0}" bileşenini kaldırmak istediğinizden emin misiniz?
 T1cavov1       : Seçilen bileşenler ({0}) panoya kopyalandı.
 T1kf2jh4       : Sunucudan kaynak(ları) yükleme
-T1wznvzc       : Lütfen FlowStream örnekleri arasında kopyalamak için "Dışa Aktar" menüsünü kullanın.
+T1wznvzc       : Lütfen Flow örnekleri arasında kopyalamak için "Dışa Aktar" menüsünü kullanın.
 T1og9dv1       : İçe aktarma tamamlandı
 Th75a7v        : Dışa aktarılan akış, "{0}" bileşeni olarak içe aktarılacaktır.
 T1bs120r       : Web sitesi
@@ -389,9 +389,9 @@ Twgj4pj        : Dakikada
 T12202zl       : Bellek
 
 // public/parts/flows.html
-T1cqglj7       : Bu Total.js Flow uygulaması herhangi bir FlowStream içermiyor
+T1cqglj7       : Bu WhoMeta Flow uygulaması herhangi bir Flow içermiyor
 T1axeojd       : Harika bir şeyler oluşturun
-T1q4g6b6       : FlowStream oluşturun
-T19fvgfc       : Toplam çalışan FlowStream'ler
+T1q4g6b6       : Flow oluşturun
+T19fvgfc       : Toplam çalışan Flow'ler
 T1j8rl         : Boyut
 T1a2p8u        : Proxy

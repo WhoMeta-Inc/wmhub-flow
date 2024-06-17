@@ -5,7 +5,7 @@ services:
       - "8000:8000"
     volumes:
       - databases:/www/.src/databases/
-      - flowstream:/www/.src/flowstream/
+      - Flow:/www/.src/flowstream/
 volumes:
   databases:
-  flowstream:
+  Flow:

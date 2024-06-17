@@ -85,7 +85,7 @@ NEWACTION('Settings/save', {
 		PREF.save();
 		$.success();
 
-		// Changed mode, needs to be restarted all FlowStreams
+		// Changed mode, needs to be restarted all Flows
 		if (restartall) {
 			var instances = [];
 			for (var key in MAIN.flowstream.instances) {

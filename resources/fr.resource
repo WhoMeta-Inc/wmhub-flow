@@ -35,10 +35,10 @@ T1hdg4       : Commencer/Continuer
 T1qonvrk     : Ouvrir dans un nouvel onglet
 Tni3fg       : Copier dans le presse-papier
 Tnhkebv      : Copier au format JSON
-Tdtifjp      : Êtes-vous sûr de vouloir redémarrer le FlowStream sélectionné "{0}" ?
-T3ex275      : FlowStream "{0}" en cours de démarrage ...
+Tdtifjp      : Êtes-vous sûr de vouloir redémarrer le Flow sélectionné "{0}" ?
+T3ex275      : Flow "{0}" en cours de démarrage ...
 T8cumeu      : Les variables ont été modifiées avec succès.
-T1y9fptk     : Voulez-vous vraiment supprimer le FlowStream "{0}" sélectionné ?
+T1y9fptk     : Voulez-vous vraiment supprimer le Flow "{0}" sélectionné ?
 T1jl4rdo     : Nouveau
 T1ew5j9l     : Importer un Flux
 Tuqw1j5      : Télécharger des modèles
@@ -60,7 +60,7 @@ Tvs07dj      : Variables
 T19rys6      : Pause
 T12tjct      : Cloner
 T19oinzj     : Redémarrer
-T1dsh7y0     : Le FlowStream a été copié dans le presse-papiers
+T1dsh7y0     : Le Flow a été copié dans le presse-papiers
 T12tbn1      : Effacer
 
 // views/index.html, public/forms/sources.html, public/parts/flow.html
@@ -85,7 +85,7 @@ T10a9v45     : Importer
 T1kg6f9o     : Compte par défaut:
 Tfgf1dd      : Remplir le formulaire
 T1q2cqbs     : S&#39;identifier
-Thuo6tp      : Powered by <b>Total.js</b>
+Thuo6tp      : Powered by <b>WhoMeta Inc</b>
 
 // views/login.html, public/forms/password.html
 T11si7c0     : Nom d&#39;utilisateur
@@ -167,7 +167,7 @@ T1gxh        : Dev
 T1jsmq       : Test
 T1hi7r       : Prod
 T176daig     : IMPORTANT:
-T1vr7uqj     : Tous les FlowStreams existants seront redémarrés automatiquement après un changement d&#39;environnement.
+T1vr7uqj     : Tous les Flows existants seront redémarrés automatiquement après un changement d&#39;environnement.
 Thricot      : Composants principaux
 T6clmkc      : Nous vous déconseillons de le changer
 Tj5ynid      : Adresse URL vers la liste des composants
@@ -210,7 +210,7 @@ T1e6vuag     : Vous n&#39;avez aucune source TMS externe
 T1d4k3lz     : Voulez-vous vraiment supprimer la source sélectionnée ?
 
 // public/forms/stream.html
-Trttn6d      : Saisissez le nom du FlowStream
+Trttn6d      : Saisissez le nom du Flow
 T1uc8um3     : Adresse URL pour l&#39;assistance
 Tmbeadb      : Facultatif, vous pouvez saisir l&#39;adresse URL de l&#39;assistance
 T13xsfh      : Vider
@@ -219,13 +219,13 @@ Thuap0r      : Référence
 T1cq6x       : Icône
 T10qvu3a     : /utilisateurs/
 Tnacenb      : Enpoint proxy
-Tcrblv6      : Il acheminera toutes les Requêtes entrantes vers ce FlowStream.
+Tcrblv6      : Il acheminera toutes les Requêtes entrantes vers ce Flow.
 T1q2fat3     : Memoire max.
 Tdsoglh      : La limite de mémoire maximale doit être définie en mégaoctets. Gestion de la mémoire pour un processus de travail. Zéro (<b>0</b>) signifie une limite de mémoire automatique.
 T7rbnir      : Informations Complémentaires
 T1ymf76w     : Format de démarque
-Tur71fp      : Mettre à jour FlowStream
-T1d741gt     : Ajouter FlowStream
+Tur71fp      : Mettre à jour Flow
+T1d741gt     : Ajouter Flow
 T6swhq6      : Endpoint invalide
 T1o0d5xf     : Ecrase par <span class="link">{1}</span> utilise par <b>{2}</b>
 
@@ -247,14 +247,14 @@ T2mhfqr      : Si vous entrez une variable, vous devez la confirmer en appuyant 
 T6k3sr1      : Version de node.js
 T10qvqiz     : Version de Total.js
 T16y1cim     : Processus
-T13mqxke     : FlowStream
+T13mqxke     : Flow
 T1873qv      : Chemin de Proxy
 T1375xdy     : Origine
 
 // public/forms/welcome.html
-Tp5payj      : Bienvenue dans l&#39;interface de programmation visuelle JavaScript appelée <b>Total.js Flow</b>.
+Tp5payj      : Bienvenue dans l&#39;interface de programmation visuelle JavaScript appelée <b>WhoMeta Flow</b>.
 T3i77bj      : Créez un nombre illimité de flux et automatisez vos appareils, processus ou flux de travail IoT.
-Tibjq9e      : Merci d&#39;avoir choisi <b>Total.js Flow</b>.
+Tibjq9e      : Merci d&#39;avoir choisi <b>WhoMeta Flow</b>.
 
 // public/js/editor.min@1.js
 T1cfqx3j     : ?:[^\\>]|\\.
@@ -283,8 +283,8 @@ T19579       : Copier
 // public/parts/flow.html
 T12vqq76     : Copier le endpoint dans le presse-papier
 T17wxfuz     : Ouvrir le endpoint
-T17nzy4g     : Documentation: Total.js Platform
-T1q1rhiy     : Infos FlowStream
+T17nzy4g     : Documentation: WhoMeta Hub
+T1q1rhiy     : Infos Flow
 T117eq6      : APPLIQUER
 T1eo1        : Ajouter
 T179lgs7     : Console
@@ -333,7 +333,7 @@ T1yv4okt     : Effacer les composants non utilisés
 Tx9q821      : Bravo, rien a éffacer
 T115jeyk     : Etes-vous sure de vouloir éffacer tous les composants non utilisés ({0})?
 T1037q6n     : Terminé, tous les composants inutiles ont été éffacés!
-Th60oo5      : Etes-vous sure de vouloir redémarrer le processus de ce FlowStream?
+Th60oo5      : Etes-vous sure de vouloir redémarrer le processus de ce Flow?
 Tffa1i1      : Données invalid trouvées dans le presse-papier
 T19ya89c     : Le composant a été importé avec succes!
 Tjqcssf      : Connexion au serveur...
@@ -341,7 +341,7 @@ Ty15iz8      : Copier le code-source
 T17n1ctu     : Etes-vous sure de vouloir supprimer les ({0}) composants sélectionnés?
 T1cavov1     : Les composants sélectionnés ({0}) ont été copié dans le presse-papier.
 T1kf2jh4     : Chargement des sources en cours!
-T1wznvzc     : Veuillez utilier le menu "Exporter" pour copier d&#39;une instance de FlowStream a un autre.
+T1wznvzc     : Veuillez utilier le menu "Exporter" pour copier d&#39;une instance de Flow a un autre.
 T1og9dv1     : Exportation terminée
 Th75a7v      : Le flux exporté sera importé en tant que composant "{0}".
 T1bs120r     : SiteWeb

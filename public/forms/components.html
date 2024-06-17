@@ -7,7 +7,7 @@
 	.ui-dark .CLASS .badge-community { background-color: #567e84; }
 </style>
 
-<ui-component name="box" path="common.form" config="if:~PATH~;icon:ti ti-flow green;title:@(Download components);autofocus:true;reload:?/reload;scrollbar:0;width:1200" class="hidden CLASS" plugin="CLASS">
+<ui-component name="box" path="common.form" config="if:~PATH~;icon:ti ti-flow red;title:@(Download components);autofocus:true;reload:?/reload;scrollbar:0;width:1200" class="hidden CLASS" plugin="CLASS">
 	<nav>
 		<button class="exec" data-exec="?/update" is="is-button" path="?.newupdates" config="enable"><i class="ti ti-sync"></i>@(Update all)</button>
 	</nav>
@@ -19,10 +19,10 @@
 			<div class="padding">
 				<div style="margin:0 0 15px 8px">
 					<div class="pull-right">
-						<span class="link fs12 exec" data-exec="flow/create"><i class="ti ti-plus-circle green mr5"></i>@(Create component)</span>
+						<span class="link fs12 exec" data-exec="flow/create"><i class="ti ti-plus-circle teal mr5"></i>@(Create component)</span>
 					</div>
-					<div class="pull-left">
-						<ui-component name="input" path="?.approve" config="type:checkbox" default="true">@(Warn about component installation)</ui-component>
+					<div class="pull-left hidden">
+						<ui-component name="input" path="?.approve" config="type:checkbox" default="false">@(Warn about component installation)</ui-component>
 					</div>
 					<div class="clearfix"></div>
 					<hr />
@@ -52,7 +52,7 @@
 						</script>
 					</ui-bind>
 				</ui-component>
-				<div class="help center m nmt"><i class="ti ti-question-circle"></i>@(Official GitHub repository:) <a href="https://github.com/totaljs/flowstreamcomponents" target="_blank">https://github.com/totaljs/flowstreamcomponents</a></div>
+				<div class="help center m nmt"><i class="ti ti-question-circle"></i>We are working on a public Repo for all your code</div>
 			</div>
 		</ui-component>
 	</div>

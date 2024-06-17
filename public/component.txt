@@ -38,7 +38,7 @@
 
 		instance.vary = function(type) {
 			// @type {String} variables|variables2|secrets
-			// FlowStream variables are changed
+			// Flow variables are changed
 		};
 
 		instance.configure();

@@ -41,7 +41,7 @@
 	<ui-component name="errorhandler"></ui-component>
 
 	<ui-component name="dropfiles" path="null" config="exec:common/dragdrop;check:common/dragdropcheck" class="hidden">
-		@(Drag &amp; Drop FlowStream)
+		@(Drag &amp; Drop Flow)
 	</ui-component>
 
 	<ui-component name="importer" path="common.form" config="if:importform;url:@{#}/forms/import.html"></ui-component>
@@ -57,6 +57,7 @@
 		<span class="search exec pull-right" data-exec="common/search" title="@(Search) (F1)"><i class="ti ti-search"></i></span>
 		<span class="console exec pull-right" data-exec="common/console" title="@(Server log)"><i class="ti ti-bug"></i></span>
 
+		<span class="green">WhoMeta Hub</span>
 		<span class="mainmenu exec" data-exec="common/focus" data-id="main"><i class="ti ti-menu"></i></span>
 
 		<ui-bind path="common.tabs" config="template:div" class="tabs block">
@@ -460,7 +461,7 @@
 							});
 							break;
 						case 'restart':
-							EXEC('-approve/show', '@(Are you sure you want to restart selected FlowStream "{0}"?)'.format(item.name), '"ti ti-sync" @(Restart)', function() {
+							EXEC('-approve/show', '@(Are you sure you want to restart selected Flow "{0}"?)'.format(item.name), '"ti ti-sync" @(Restart)', function() {
 								exports.tapi('streams_restart/{0} ERROR'.format(id), AEXEC('-notify/success', '@(FlowStream "{0}" is restarting ...)'.format(item.name)));
 							});
 							break;
@@ -489,7 +490,7 @@
 
 								if (opt.id === 'copy' || opt.id === 'copy2') {
 									EXEC('-clipboard/copy', opt.id === 'copy' ? ENCRYPT(response.value, common.secret, 'flow') : JSON.stringify(FUNC.cleanflow(JSON.parse(response.value)), null, '\t'));
-									EXEC('-notify/success', '@(The FlowStream has been copied into the clipboard)');
+									EXEC('-notify/success', '@(The Flow has been copied into the clipboard)');
 								} else {
 									exports.tapi('clipboard_import @showloading ERROR', { data: response.value }, function(response) {
 										exports.refresh();
@@ -510,7 +511,7 @@
 							});
 							break;
 						case 'remove':
-							user.sa && EXEC('-approve/show', '@(Are you sure you want to remove selected FlowStream "{0}"?)'.format(item.name), '"ti ti-remove" @(Remove)', function() {
+							user.sa && EXEC('-approve/show', '@(Are you sure you want to remove selected Flow "{0}"?)'.format(item.name), '"ti ti-remove" @(Remove)', function() {
 								exports.tapi('streams_remove/{0} ERROR'.format(id), exports.refresh);
 							});
 							break;
@@ -551,7 +552,7 @@
 
 				if (user.sa || user.permissions.includes('create')) {
 					items.push({ id: 'create', name: '@(Create new)', icon: 'ti ti-plus-circle green' });
-					items.push({ id: 'import', name: '@(Import FlowStream)', icon: 'ti ti-download', hidden: true });
+					items.push({ id: 'import', name: '@(Import Flow)', icon: 'ti ti-download', hidden: true });
 				}
 
 				items.push({ id: 'search', name: '@(Search)', icon: 'ti ti-search' });
@@ -605,7 +606,7 @@
 						break;
 
 					case 'update':
-						EXEC('-approve/show', '<i class="ti ti-warning red"></i><b>@(WARNING):</b> @(Are you sure you want to update bundle of the Total.js Flow? It is a hazardous step.)', '"ti ti-sync" @(Upload bundle)', function() {
+						EXEC('-approve/show', '<i class="ti ti-warning red"></i><b>@(WARNING):</b> @(Are you sure you want to update bundle of the WhoMeta Flow? It is a hazardous step.)', '"ti ti-sync" @(Upload bundle)', function() {
 							var opt = {};
 							opt.multiple = false;
 							opt.url = '/fapi/update/' + model.openplatform;

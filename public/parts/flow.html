@@ -8,8 +8,8 @@
 		</div>
 
 		<div class="pull-right">
-			<a href="https://docs.totaljs.com/flow10/" title="@(Documentation: Total.js Platform)" target="_blank" class="special"><i class="ti ti-book"></i></a>
-			<button title="@(FlowStream information)" class="exec pull-right" data-exec="?/info"><i class="ti ti-info-circle color"></i></button>
+			<a href="https://help.whometa.io" title="@(Documentation: WhoMeta Hub)" target="_blank" class="special"><i class="ti ti-book"></i></a>
+			<button title="@(Flow information)" class="exec pull-right" data-exec="?/info"><i class="ti ti-info-circle color"></i></button>
 		</div>
 
 		<div is="is-div" path="?.changed" config=".highlight button" class="apply-button">
@@ -174,7 +174,7 @@
 		var checksums = {};
 		var settings_current;
 		var settings_data;
-		var flowstreamid = common.socket.split('/').trim()[3];
+		var Flowid = common.socket.split('/').trim()[3];
 		var init = false;
 		var sourcecache = {};
 
@@ -272,14 +272,14 @@
 		exports.create = function() {
 			common.form && NUL('common.form');
 			AJAX('GET /component.txt @showloading', function(response) {
-				SET('componenteditor @default', { flowstreamid: flowstreamid, body: response });
+				SET('componenteditor @default', { Flowid: Flowid, body: response });
 				SET('common.page @hideloading', 'componenteditor');
 			});
 		};
 
 		exports.link = function() {
 			AJAX('GET /endpoint.txt @showloading', function(response) {
-				SET('formendpoint @default', { flowstreamid: flowstreamid, body: response });
+				SET('formendpoint @default', { Flowid: Flowid, body: response });
 				SET('common.form @hideloading', 'formendpoint');
 			});
 		};
@@ -620,12 +620,12 @@
 		exports.exportasbase64 = function() {
 			SETTER('websocket/send', { TYPE: 'export', callback: ASETTER('message/response', function(response) {
 				SETTER('clipboard/copy', btoa(encodeURIComponent(STRINGIFY(response.data))));
-				SETTER('notify/success', '@(The FlowStream has been copied into the clipboard as base64 format)');
+				SETTER('notify/success', '@(The Flow has been copied into the clipboard as base64 format)');
 			})});
 		};
 
 		exports.exportascomponent = function() {
-			SETTER('approve/show', '@(Are you sure you want to create a component from this FlowStream?)', '"ti ti-file-export" @(Export)', function() {
+			SETTER('approve/show', '@(Are you sure you want to create a component from this Flow?)', '"ti ti-file-export" @(Export)', function() {
 				SETTER('websocket/send', { TYPE: 'export', callback: ASETTER('message/response', function(response) {
 
 					var flow = response.data;
@@ -717,7 +717,7 @@
 </body>`.format(flow.icon, flow.name));
 						builder.push('\n<readme>\n' + flow.readme + '\n</readme>');
 
-						SET('componenteditor @default', { flowstreamid: flowstreamid, body: builder.join('\n') });
+						SET('componenteditor @default', { Flowid: Flowid, body: builder.join('\n') });
 						SET('common.page', 'componenteditor');
 				})});
 			});
@@ -1335,12 +1335,12 @@
 								SETTER('filesaver/save', flow.head.name + '.json', data, 'json');
 							} else {
 								navigator.clipboard.writeText(data).catch(err => console.error(err));
-								SETTER('notify/success', '@(The FlowStream has been copied into the clipboard)');
+								SETTER('notify/success', '@(The Flow has been copied into the clipboard)');
 							}
 						})});
 						break;
 					case 'restart':
-						SETTER('approve/show', '@(Are you sure you want to restart this FlowStream process?)', '"ti ti-sync" @(Restart)', ASETTER('websocket/send', { TYPE: 'restart' }));
+						SETTER('approve/show', '@(Are you sure you want to restart this Flow process?)', '"ti ti-sync" @(Restart)', ASETTER('websocket/send', { TYPE: 'restart' }));
 						break;
 				}
 
@@ -1685,7 +1685,7 @@
 							if (item.id === 'clone')
 								delete response.id;
 
-							response.flowstreamid = flowstreamid;
+							response.flowstreamid = Flowid;
 							SET('componenteditor @reset', response);
 							SET('common.page @hideloading', 'componenteditor');
 						})});
@@ -1724,7 +1724,7 @@
 			if (!selected.components.length)
 				return;
 
-			let data = { type: 'copied_components', flowstreamid, items: [] };
+			let data = { type: 'copied_components', Flowid, items: [] };
 
 			for (let com of selected.components) {
 				const { id, component, name, config, inputs, outputs, connections, template, html, tab, x, y, $inputs, $outputs } = com.instance;
@@ -1744,7 +1744,7 @@
 			if (!selected.components.length)
 				return;
 
-			var data = { type: 'exported_components', flowstreamid, items: [], components: {}};
+			var data = { type: 'exported_components', Flowid, items: [], components: {}};
 			var components = {};
 
 			for (var com of flow.components)
@@ -1787,11 +1787,11 @@
 					return;
 				}
 
-				if ((data.type === 'copied_components' || data.type === 'exported_components') && data.flowstreamid === flowstreamid) {
+				if ((data.type === 'copied_components' || data.type === 'exported_components') && data.flowstreamid === Flowid) {
 					paste_components(data.items, pos);
 					return;
-				} if (data.type === 'copied_components' && data.flowstreamid !== flowstreamid) { // external copy & local paste
-					SETTER('notify/warning', '@(Please use "Export" menu to copy between FlowStream instances.)');
+				} if (data.type === 'copied_components' && data.flowstreamid !== Flowid) { // external copy & local paste
+					SETTER('notify/warning', '@(Please use "Export" menu to copy between Flow instances.)');
 					return;
 				} else if (data.type === 'exported_components') { // external copy&paste
 
@@ -2146,7 +2146,7 @@
 	FUNC.trigger = function(el, data) {
 
 		if (flow.changed) {
-			SETTER('message/warning', '@(While the FlowStream contains unapplied changes, this action is not permitted.)');
+			SETTER('message/warning', '@(While the Flow contains unapplied changes, this action is not permitted.)');
 			return;
 		}
 

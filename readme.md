@@ -1,4 +1,4 @@
-# Total.js Flow
+# WhoMeta Flow
 
 [![Made in EU](https://cdn.componentator.com/eu-small.png)](https://european-union.europa.eu/)
 

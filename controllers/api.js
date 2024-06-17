@@ -9,7 +9,7 @@ exports.install = function() {
 	ROUTE('GET       /notify/{id}/',      notify);
 	ROUTE('POST      /notify/{id}/ <1MB', notify); // 1 MB
 
-	// FlowStream
+	// Flow
 	ROUTE('+API     ?    -streams                          --> Streams/query');
 	ROUTE('+API     ?    -streams_read/{id}                --> Streams/read');
 	ROUTE('+API     ?    +streams_save                     --> Streams/save');

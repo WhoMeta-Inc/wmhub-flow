@@ -1,7 +1,7 @@
 <ui-component name="miniform" path="common.form" config="if:~PATH~;icon:ti ti-upload;autofocus:false;reload:?/reload;submit:?/submit;width:420" class="hidden ~PATH~" plugin="~PATH~">
 	<img src="/img/publish.png" class="img-responsive" alt="" />
 	<div class="padding">
-		<p>@(Thanks for your interest in publishing your content to the Total.js Flow community. Our team will check it and, if everything is in order, we can make your FlowStream available for download to everyone in the community of Flow.)</p>
+		<p>@(Thanks for your interest in publishing your content to the WhoMeta Flow community. Our team will check it and, if everything is in order, we can make your Flow available for download to everyone in the community of Flow.)</p>
 		<hr />
 		<div class="fs12">
 			<ui-bind path="?.name" config="text b" class="block">@(Name): <b></b></ui-bind>
@@ -24,7 +24,7 @@
 
 		exports.reload = function(form) {
 			var model = exports.model;
-			form.reconfigure({ title: model.type === 'flowstream' ? '@(Publish FlowStream)' : '@(Publish component)' });
+			form.reconfigure({ title: model.type === 'flowstream' ? '@(Publish Flow)' : '@(Publish component)' });
 		};
 
 		exports.submit = function(hide) {

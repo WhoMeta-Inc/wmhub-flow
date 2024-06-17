@@ -11,7 +11,7 @@ function buildplugin(name, callback) {
 	});
 }
 
-console.log('|-- Total.js bundle compiler');
+console.log('|-- WhoMeta compiler');
 console.time('|-- Compilation');
 
 console.log('| |--', 'app.bundle');

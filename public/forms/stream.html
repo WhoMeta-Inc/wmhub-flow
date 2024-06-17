@@ -3,7 +3,7 @@
 		<div class="grid-2">
 			<div class="m">
 				<ui-component name="input" path="?.name" config="required:1" default="''">@(Name)</ui-component>
-				<div class="help">@(Enter FlowStream name)</div>
+				<div class="help">@(Enter Flow name)</div>
 			</div>
 			<div class="m">
 				<ui-component name="input" path="?.url" default="'https://'">@(URL address for support)</ui-component>
@@ -37,12 +37,12 @@
 			</div>
 			<div class="col-md-6">
 				<ui-component name="input" path="?.proxypath" config="placeholder:@(/users/)"><i class="ti ti-server"></i><b>@(Proxy endpoint)</b></ui-component>
-				<div class="help">@(It will route all incoming requests to this FlowStream.)</div>
+				<div class="help">@(It will route all incoming requests to this Flow.)</div>
 			</div>
 		</div>
 		<hr />
 		<ui-component name="input" path="?.cloning" config="type:checkbox" default="true" class="b">@(Enable cloning of message data)</ui-component>
-		<div class="help">@(By disabling this option you can improve FlowStream performance because message data will not be cloned in the exchange. But on the other hand you may have trouble with object references.)</div>
+		<div class="help">@(By disabling this option you can improve Flow performance because message data will not be cloned in the exchange. But on the other hand you may have trouble with object references.)</div>
 		<hr />
 		<div class="row">
 			<div class="col-md-3 m">
@@ -74,7 +74,7 @@
 		exports.reload = function(com) {
 			var model = exports.model;
 			var id = model ? model.id : null;
-			com.reconfigure({ title: id ? '@(Update FlowStream)' : '@(Add FlowStream)' });
+			com.reconfigure({ title: id ? '@(Update Flow)' : '@(Add Flow)' });
 		};
 
 		exports.submit = function(hide) {

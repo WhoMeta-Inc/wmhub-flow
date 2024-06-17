@@ -17,7 +17,7 @@
 				</div>
 			</ui-component>
 			<div class="clearfix">&nbsp;</div>
-			<div class="message message-alert m"><i class="ti ti-exclamation-triangle"></i><b>@(IMPORTANT:)</b><br />@(All existing FlowStreams will be restarted automatically after changing environment.)</div>
+			<div class="message message-alert m"><i class="ti ti-exclamation-triangle"></i><b>@(IMPORTANT:)</b><br />@(All existing Flows will be restarted automatically after changing environment.)</div>
 		</div>
 		<hr />
 		<div class="padding npt">
@@ -30,7 +30,7 @@
 				</div>
 				<div class="col-md-6 m">
 					<ui-component name="input" path="?.components2" config="type:url;placeholder:@(URL address to list of components)">@(Custom components)</ui-component>
-					<div class="help"><a href="https://github.com/totaljs/flowstreamcomponents/blob/main/db.json" target="_blank"><i class="ti ti-link"></i>@(Follow this file structure)</a></div>
+					<div class="help"><a href="https://raw.githubusercontent.com/whometa/wmhubflowcomp/main/db.json" target="_blank"><i class="ti ti-link"></i>@(Follow this file structure)</a></div>
 				</div>
 			</div>
 
@@ -43,6 +43,7 @@
 			<ui-component name="checkbox" path="?.backup">@(Backup Flow database file after each change)</ui-component>
 			<ui-component name="checkbox" path="?.darkmode">@(Enable dark mode)</ui-component>
 
+			<div class="hidden">
 			<div class="caption m" style="margin-top:15px">
 				<label><i class="ti ti-openplatform color"></i>OpenPlatform</label>
 			</div>
@@ -64,6 +65,7 @@
 					<ui-component name="input" path="?.op_restoken" config="camouflage:1;placeholder:@(Enter a token)">@(Response token)</ui-component>
 				</div>
 			</div>
+		</div>
 			<div class="message message-alert">
 				<div class="b"><i class="ti ti-warning mr5"></i>@(Warning)</div>
 				@(You will be automatically logged out if you enter tokens for the OpenPlatform.)

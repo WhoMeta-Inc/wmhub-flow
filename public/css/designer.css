@@ -31,14 +31,14 @@ body.ui-dark { background-color: #202020 !important; }
 .header button b { position: absolute; margin: 12px 0 0 4px; }
 .header button b i { font-size: 8px; }
 .header button.apply { padding: 0 15px 0 13px !important; font-weight: bold; }
-.header button.apply i { margin-right: 7px; color: #68B25B; }
+.header button.apply i { margin-right: 7px; color: #119CBC; }
 .header button.highlight { background-color: var(--color) !important; color: #FFF !important; }
 .header button.highlight i { color: #FFF !important; }
 .header button.paused { background-color: red !important; color: #FFF; }
 .header button.paused i { color: #FFF !important; }
 .header button.labeled { padding: 0 15px 0 13px !important; line-height: 30px; }
 .header button.labeled i { margin: 8px 7px 0 0; float: left; }
-.header button.changed { color: #FFF !important; background: #68B25B !important; animation: 1s blink infinite alternate forwards; }
+.header button.changed { color: #FFF !important; background: #119CBC !important; animation: 1s blink infinite alternate forwards; }
 .header button.changed i { color: #FFF; }
 .header button span { font-size: 12px; }
 .header button:hover, header a:hover { background-color: #F0F0F0; }
@@ -53,8 +53,8 @@ body.ui-dark { background-color: #202020 !important; }
 .ui-dark .header-special { border-left-color: #404040; }
 .ui-dark .header { background-color: #202020; border-bottom-color: #404040; }
 .ui-dark .header button, .ui-dark header a { background-color: transparent; color: #D0D0D0; }
-.ui-dark .header button.apply i { color: #68B25B; }
-.ui-dark .header button.changed { color: #FFF !important; background: #68B25B !important; }
+.ui-dark .header button.apply i { color: #119CBC; }
+.ui-dark .header button.changed { color: #FFF !important; background: #119CBC !important; }
 .ui-dark .header button.changed i { color: #FFF; }
 .ui-dark .header button:disabled { color: #777 !important; }
 .ui-dark .header button:hover, .ui-dark header a:hover { background-color: #333; color: #FFF; }
@@ -146,7 +146,7 @@ body.ui-dark { background-color: #202020 !important; }
 .ui-flow header i { color: #FFF; margin-right: 5px; width: 18px; height: 18px; line-height: 18px; border-radius: 3px; text-align: center; font-size: 11px; vertical-align: middle; }
 .ui-flow header i.ti { transform: scale(1); font-size: 14px; }
 .ui-flow .component { box-shadow: 2px 2px 13px rgba(0,0,0,0.15); border-width: 2px; max-width: 250px; }
-.ui-flow .component.isnewbie { border-color: #68B25B; }
+.ui-flow .component.isnewbie { border-color: #119CBC; }
 .ui-flow .component.iserror { border-color: red; }
 .ui-flow .component-selected { border-color: var(--color) !important; }
 .ui-dark .ui-flow .component-selected { border-color: var(--color) !important; }
@@ -200,7 +200,7 @@ body.ui-dark { background-color: #202020 !important; }
 .toolbar label { height: 26px; line-height: 26px; float: left; font-size: 16px; font-weight: bold; }
 .toolbar button { outline: 0; background: #FFF; border: 1px solid #E0E0E0; border-left: 0; font-size: 11px; height: 26px; padding: 0 8px; color: #000; min-width: 80px; text-align: center; vertical-align: top; background-color: #FFF; line-height: 24px; float: left; text-align: center !important; }
 .toolbar button i { margin-right: 5px; }
-.toolbar button .ti-plus-circle, .toolbar button .ti-check-circle { color: #68B25B; }
+.toolbar button .ti-plus-circle, .toolbar button .ti-check-circle { color: #119CBC; }
 .toolbar button:first-child { border-left: 1px solid #E0E0E0; border-top-left-radius: var(--radius); border-bottom-left-radius: var(--radius); }
 .toolbar button:last-child { border-top-right-radius: var(--radius); border-bottom-right-radius: var(--radius); }
 .toolbar button:hover { border-color: #D0D0D0; }
@@ -274,13 +274,13 @@ body.ui-dark { background-color: #202020 !important; }
 .message i { margin-right: 5px; }
 .message-error { border-color: #D63A32; color: #D63A32; }
 .message-alert { border-color: #DEBA31; color: #DEBA31; }
-.message-success { border-color: #68B25B; color: #68B25B; }
+.message-success { border-color: #119CBC; color: #119CBC; }
 
 .badge { font-size: 12px; padding: 4px 6px; border-radius: var(--radius); background-color: var(--color); line-height: 12px; vertical-align: middle; margin-top: -2px; position: relative; display: inline-block; color: #FFF; }
 .badge i { margin-right: 3px; }
 .badge-blue { background-color: #0E68A6; }
 .badge-red { background-color: #D63B32; }
-.badge-green { background-color: #8CC152; }
+.badge-green { background-color: #119CBC; }
 .badge-yellow { background-color: #EFDC05; }
 .badge-orange { background-color: #FF8E37; }
 .badge-gray { background-color: #606060; }
