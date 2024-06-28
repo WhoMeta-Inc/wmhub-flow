@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: flows
+  name: prod
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-databases-flow-flows-ruby
+  name: pv-databases-flow-flows-whometa
   labels:
     type: local
 spec:
@@ -16,12 +16,12 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data/ruby/databases-flow"
+    path: "/mnt/data/whometa/databases-flow"
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-flow-flows-ruby
+  name: pv-flow-flows-whometa
   labels:
     type: local
 spec:
@@ -31,13 +31,13 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data/ruby/flow"
+    path: "/mnt/data/whometa/flow"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-databases-flow-flows-ruby
-  namespace: flows
+  name: pvc-databases-flow-flows-whometa
+  namespace: prod
 spec:
   storageClassName: default
   accessModes:
@@ -49,8 +49,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-flow-flows-ruby
-  namespace: flows
+  name: pvc-flow-flows-whometa
+  namespace: prod
 spec:
   storageClassName: default
   accessModes:
@@ -62,22 +62,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: whometa-flow-flows-ruby
-  namespace: flows
+  name: whometa-flow-flows-whometa
+  namespace: prod
   labels:
-    app: whometa-flow-flows-ruby
+    app: whometa-flow-flows-whometa
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: whometa-flow-flows-ruby
+      app: whometa-flow-flows-whometa
   template:
     metadata:
       labels:
-        app: whometa-flow-flows-ruby
+        app: whometa-flow-flows-whometa
     spec:
       containers:
-      - name: whometa-flow-flows-ruby
+      - name: whometa-flow-flows-whometa
         image: wmacs.azurecr.io/whometa/whometa-flow:latest # Passen Sie das Docker-Image an
         ports:
         - containerPort: 8000
@@ -89,21 +89,21 @@ spec:
       volumes:
       - name: databases-storage
         persistentVolumeClaim:
-          claimName: pvc-databases-flow-flows-ruby
+          claimName: pvc-databases-flow-flows-whometa
       - name: flow-storage
         persistentVolumeClaim:
-          claimName: pvc-flow-flows-ruby
+          claimName: pvc-flow-flows-whometa
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: whometa-flow-flows-ruby-service
-  namespace: flows
+  name: whometa-flow-flows-whometa-service
+  namespace: prod
   labels:
-    app: whometa-flow-flows-ruby
+    app: whometa-flow-flows-whometa
 spec:
   selector:
-    app: whometa-flow-flows-ruby
+    app: whometa-flow-flows-whometa
   ports:
   - protocol: TCP
     port: 80
@@ -113,22 +113,22 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: whometa-flow-flows-runicbytes-cert
-  namespace: flows
+  name: whometa-flow-cert
+  namespace: prod
 spec:
-  secretName: whometa-flow-flows-runicbytes-tls
+  secretName: whometa-flow-tls
   issuerRef:
     name: letsencrypt-azure
     kind: ClusterIssuer
-  commonName: runicbytes.flows.whometa.eu
+  commonName: flow.whometa.eu
   dnsNames:
-  - runicbytes.flows.whometa.eu
+  - flow.whometa.eu
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: whometa-flow-flows-runicbytes-ingress
-  namespace: flows
+  name: whometa-flow-ingress
+  namespace: prod
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: letsencrypt-azure
@@ -136,16 +136,16 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - runicbytes.flows.whometa.eu
-    secretName: whometa-flow-flows-runicbytes-tls
+    - flow.whometa.eu
+    secretName: whometa-flow-tls
   rules:
-  - host: runicbytes.flows.whometa.eu
+  - host: flow.whometa.eu
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: whometa-flow-flows-ruby-service
+            name: whometa-flow-flows-whometa-service
             port:
               number: 80

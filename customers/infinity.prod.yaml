@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: partner
+  name: flows
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-databases-flow-partner-infinityshare
+  name: pv-databases-flow-flows-infinity
   labels:
     type: local
 spec:
@@ -16,12 +16,12 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data/infinityshare/databases-flow"
+    path: "/mnt/data/infinity/databases-flow"
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-flow-partner-infinityshare
+  name: pv-flow-flows-infinity
   labels:
     type: local
 spec:
@@ -31,13 +31,13 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/mnt/data/infinityshare/flow"
+    path: "/mnt/data/infinity/flow"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-databases-flow-partner-infinityshare
-  namespace: partner
+  name: pvc-databases-flow-flows-infinity
+  namespace: flows
 spec:
   storageClassName: default
   accessModes:
@@ -49,8 +49,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-flow-partner-infinityshare
-  namespace: partner
+  name: pvc-flow-flows-infinity
+  namespace: flows
 spec:
   storageClassName: default
   accessModes:
@@ -62,22 +62,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: whometa-flow-partner-infinityshare
-  namespace: partner
+  name: whometa-flow-flows-infinity
+  namespace: flows
   labels:
-    app: whometa-flow-partner-infinityshare
+    app: whometa-flow-flows-infinity
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: whometa-flow-partner-infinityshare
+      app: whometa-flow-flows-infinity
   template:
     metadata:
       labels:
-        app: whometa-flow-partner-infinityshare
+        app: whometa-flow-flows-infinity
     spec:
       containers:
-      - name: whometa-flow-partner-infinityshare
+      - name: whometa-flow-flows-infinity
         image: wmacs.azurecr.io/whometa/whometa-flow:latest # Passen Sie das Docker-Image an
         ports:
         - containerPort: 8000
@@ -89,21 +89,21 @@ spec:
       volumes:
       - name: databases-storage
         persistentVolumeClaim:
-          claimName: pvc-databases-flow-partner-infinityshare
+          claimName: pvc-databases-flow-flows-infinity
       - name: flow-storage
         persistentVolumeClaim:
-          claimName: pvc-flow-partner-infinityshare
+          claimName: pvc-flow-flows-infinity
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: whometa-flow-partner-infinityshare-service
-  namespace: partner
+  name: whometa-flow-flows-infinity-service
+  namespace: flows
   labels:
-    app: whometa-flow-partner-infinityshare
+    app: whometa-flow-flows-infinity
 spec:
   selector:
-    app: whometa-flow-partner-infinityshare
+    app: whometa-flow-flows-infinity
   ports:
   - protocol: TCP
     port: 80
@@ -113,22 +113,22 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: whometa-flow-partner-infinityshare-cert
-  namespace: partner
+  name: whometa-flow-flows-infinity-cert
+  namespace: flows
 spec:
-  secretName: whometa-flow-partner-infinityshare-tls
+  secretName: whometa-flow-flows-infinity-tls
   issuerRef:
     name: letsencrypt-azure
     kind: ClusterIssuer
-  commonName: infinityshare.partner.whometa.eu
+  commonName: infinity.flows.whometa.eu
   dnsNames:
-  - infinityshare.partner.whometa.eu
+  - infinity.flows.whometa.eu
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: whometa-flow-partner-infinityshare-ingress
-  namespace: partner
+  name: whometa-flow-flows-infinity-ingress
+  namespace: flows
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: letsencrypt-azure
@@ -136,16 +136,16 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - infinityshare.partner.whometa.eu
-    secretName: whometa-flow-partner-infinityshare-tls
+    - infinity.flows.whometa.eu
+    secretName: whometa-flow-flows-infinity-tls
   rules:
-  - host: infinityshare.partner.whometa.eu
+  - host: infinity.flows.whometa.eu
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: whometa-flow-partner-infinityshare-service
+            name: whometa-flow-flows-infinity-service
             port:
               number: 80
