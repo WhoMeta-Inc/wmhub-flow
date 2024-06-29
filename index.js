@@ -7,6 +7,9 @@ require('total5');
 
 const options = {};
 
+options.ip = '0.0.0.0';
+options.port = parseInt(process.env.PORT || '8000');
+
 // options.ip = '127.0.0.1';
 // options.port = parseInt(process.argv[2]);
 // options.unixsocket = PATH.join(F.tmpdir, 'app_name.socket');

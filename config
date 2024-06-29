@@ -7,7 +7,8 @@ cookie_secret   (generate)  : 10
 $api                        : /fapi/
 $customtitles               : true
 
-// directory                   : /absolute/path/to/flow/database/
+directory : /www/.src/databases
+
 
 // Disables: Worker/Fork
 // Flow_worker           : false
