@@ -9,6 +9,7 @@
   "dependencies": {
     "@elastic/elasticsearch": "^8.14.0",
     "@sendgrid/mail": "^8.1.3",
+    "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "mssql": "^11.0.0",
     "total5": "latest",
