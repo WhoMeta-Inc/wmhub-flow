@@ -3,35 +3,16 @@ kind: Namespace
 metadata:
   name: prod
 ---
-apiVersion: v1
-kind: PersistentVolume
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
 metadata:
-  name: pv-databases-flow
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mnt/data/databases-flow"
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: pv-flow
-  labels:
-    type: local
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mnt/data/flow"
+  name: azure-managed-disk
+provisioner: kubernetes.io/azure-disk
+parameters:
+  skuName: Standard_LRS  # Alternativ Premium_LRS je nach Bedarf
+  kind: Managed
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -39,9 +20,9 @@ metadata:
   name: pvc-databases-flow
   namespace: prod
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteOnce
+  storageClassName: azure-managed-disk
   resources:
     requests:
       storage: 1Gi
@@ -52,9 +33,9 @@ metadata:
   name: pvc-flow
   namespace: prod
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteOnce
+  storageClassName: azure-managed-disk
   resources:
     requests:
       storage: 1Gi
@@ -77,22 +58,22 @@ spec:
         app: whometa-flow
     spec:
       containers:
-      - name: whometa-flow
-        image: wmacs.azurecr.io/whometa/whometa-flow:latest # Passen Sie das Docker-Image an
-        ports:
-        - containerPort: 8000
-        volumeMounts:
-        - mountPath: /www/.src/databases
-          name: databases-storage
-        - mountPath: /www/.src/flowstream
-          name: flow-storage
+        - name: whometa-flow
+          image: wmacs.azurecr.io/whometa/whometa-flow:latest
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - mountPath: /www/.src/databases
+              name: databases-storage
+            - mountPath: /www/.src/flowstream
+              name: flow-storage
       volumes:
-      - name: databases-storage
-        persistentVolumeClaim:
-          claimName: pvc-databases-flow
-      - name: flow-storage
-        persistentVolumeClaim:
-          claimName: pvc-flow
+        - name: databases-storage
+          persistentVolumeClaim:
+            claimName: pvc-databases-flow
+        - name: flow-storage
+          persistentVolumeClaim:
+            claimName: pvc-flow
 ---
 apiVersion: v1
 kind: Service
@@ -105,9 +86,9 @@ spec:
   selector:
     app: whometa-flow
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8000
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
   type: ClusterIP
 ---
 apiVersion: cert-manager.io/v1
@@ -122,7 +103,7 @@ spec:
     kind: ClusterIssuer
   commonName: flow.whometa.eu
   dnsNames:
-  - flow.whometa.eu
+    - flow.whometa.eu
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -135,17 +116,17 @@ metadata:
 spec:
   ingressClassName: nginx
   tls:
-  - hosts:
-    - flow.whometa.eu
-    secretName: whometa-flow-tls
+    - hosts:
+        - flow.whometa.eu
+      secretName: whometa-flow-tls
   rules:
-  - host: flow.whometa.eu
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: whometa-flow-service
-            port:
-              number: 80
+    - host: flow.whometa.eu
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: whometa-flow-service
+                port:
+                  number: 80
