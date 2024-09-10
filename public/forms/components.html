@@ -76,7 +76,7 @@
 					var com = flow.components.findItem('name', item.name);
 					item.newupdate = com ? item.version.localeCompare(com.version, { numeric: true }) > 0 : false;
 					item.installed = com != null;
-					item.community = item.author ? !(/total\.js/i).test(item.author) : true;
+					item.community = false;
 
 					if (!item.group)
 						item.group = '0';

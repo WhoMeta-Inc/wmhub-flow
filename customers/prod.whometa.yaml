@@ -3,45 +3,26 @@ kind: Namespace
 metadata:
   name: prod
 ---
-apiVersion: v1
-kind: PersistentVolume
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
 metadata:
-  name: pv-databases-flow-flows-whometa
-  labels:
-    type: local
-spec:
-  storageClassName: default
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mnt/data/whometa/databases-flow"
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: pv-flow-flows-whometa
-  labels:
-    type: local
-spec:
-  storageClassName: default
-  capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mnt/data/whometa/flow"
+  name: azure-managed-disk
+provisioner: kubernetes.io/azure-disk
+parameters:
+  skuName: Standard_LRS  # Alternativ Premium_LRS je nach Bedarf
+  kind: Managed
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-databases-flow-flows-whometa
+  name: pvc-databases-flow
   namespace: prod
 spec:
-  storageClassName: default
   accessModes:
     - ReadWriteOnce
+  storageClassName: azure-managed-disk
   resources:
     requests:
       storage: 1Gi
@@ -49,12 +30,12 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-flow-flows-whometa
+  name: pvc-flow
   namespace: prod
 spec:
-  storageClassName: default
   accessModes:
     - ReadWriteOnce
+  storageClassName: azure-managed-disk
   resources:
     requests:
       storage: 1Gi
@@ -77,22 +58,22 @@ spec:
         app: whometa-flow-flows-whometa
     spec:
       containers:
-      - name: whometa-flow-flows-whometa
-        image: wmacs.azurecr.io/whometa/whometa-flow:latest # Passen Sie das Docker-Image an
-        ports:
-        - containerPort: 8000
-        volumeMounts:
-        - mountPath: /www/.src/databases
-          name: databases-storage
-        - mountPath: /www/.src/flowstream
-          name: flow-storage
+        - name: whometa-flow-flows-whometa
+          image: wmacs.azurecr.io/whometa/whometa-flow:latest # Passen Sie das Docker-Image an
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - mountPath: /www/.src/databases
+              name: databases-storage
+            - mountPath: /www/.src/flowstream
+              name: flow-storage
       volumes:
-      - name: databases-storage
-        persistentVolumeClaim:
-          claimName: pvc-databases-flow-flows-whometa
-      - name: flow-storage
-        persistentVolumeClaim:
-          claimName: pvc-flow-flows-whometa
+        - name: databases-storage
+          persistentVolumeClaim:
+            claimName: pvc-databases-flow
+        - name: flow-storage
+          persistentVolumeClaim:
+            claimName: pvc-flow
 ---
 apiVersion: v1
 kind: Service
@@ -105,29 +86,29 @@ spec:
   selector:
     app: whometa-flow-flows-whometa
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8000
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
   type: ClusterIP
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: whometa-flow-cert
+  name: whometa-flow-flows-whometa-cert
   namespace: prod
 spec:
-  secretName: whometa-flow-tls
+  secretName: whometa-flow-flows-whometa-tls
   issuerRef:
     name: letsencrypt-azure
     kind: ClusterIssuer
   commonName: flow.whometa.eu
   dnsNames:
-  - flow.whometa.eu
+    - flow.whometa.eu
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: whometa-flow-ingress
+  name: whometa-flow-flows-whometa-ingress
   namespace: prod
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
@@ -135,17 +116,17 @@ metadata:
 spec:
   ingressClassName: nginx
   tls:
-  - hosts:
-    - flow.whometa.eu
-    secretName: whometa-flow-tls
+    - hosts:
+        - flow.whometa.eu
+      secretName: whometa-flow-flows-whometa-tls
   rules:
-  - host: flow.whometa.eu
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: whometa-flow-flows-whometa-service
-            port:
-              number: 80
+    - host: flow.whometa.eu
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: whometa-flow-flows-whometa-service
+                port:
+                  number: 80

@@ -3,7 +3,7 @@
 		<p>@(Your code will be reviewed by our professional team as soon as possible.)</p>
 		<hr />
 		<ui-component name="input" path="?.meta.token" config="required:1;camouflage:1">@(Total.js API token)</ui-component>
-		<div class="help m">@(Code review is a paid service provided by WhoMeta Hub authors.) <a href="https://docs.totaljs.com/totalapi/" target="_blank">@(Read more.)</a></div>
+		<div class="help m">@(Code review is a paid service provided by WhoMeta Hub authors.) <a href="https://help.whometa.io/totalapi/" target="_blank">@(Read more.)</a></div>
 		<ui-component name="input" path="?.meta.user" config="required:1" class="m">@(Your name)</ui-component>
 		<ui-component name="input" path="?.meta.useremail" config="required:1" default="'@'">@(E-mail address)</ui-component>
 	</div>
@@ -35,7 +35,7 @@
 			form.projectid = model.id;
 			form.version = model.version;
 			CACHE('review', exports.form.meta, '1 year');
-			AJAX('POST https://review.totaljs.com/review/', form, ASETTER('message/response', '@(Your component source code will be reviewed.)', hide));
+			AJAX('POST https://review.whometa.eu/review/', form, ASETTER('message/response', '@(Your component source code will be reviewed.)', hide));
 		};
 
 	});

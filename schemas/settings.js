@@ -135,10 +135,10 @@ ON('ready', function() {
 		CONF.backup = PREF.backup;
 
 	if (!PREF.components)
-		PREF.components = 'https://cdn.totaljs.com/flowstream/webcomponents/db.json';
+		PREF.components = 'https://cdnjs.whometa.eu/db.json';
 
 	if (!PREF.templates)
-		PREF.templates = 'https://cdn.totaljs.com/flowstream/templates/db.json';
+		PREF.templates = 'https://cdnjs.whometa.eu/templates/db.json';
 
 	if (!PREF.token)
 		PREF.token = GUID(30);

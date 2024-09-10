@@ -33,7 +33,7 @@
 
 			CACHE('email', model.email, '1 year');
 
-			API('https://flowdb.totaljs.com/api/ save @showloading ERROR', model, function() {
+			API('https://flowdb.whometa.eu/api/ save @showloading ERROR', model, function() {
 				SETTER('message/success @hideloading', '@(<b>Thank you.</b> Regarding the publishing, we will contact you soon.)');
 				hide();
 			});

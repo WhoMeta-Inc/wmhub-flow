@@ -76,14 +76,14 @@
 				exports.ajax('GET ' + url, function(list) {
 
 					for (var m of list)
-						m.community = m.author ? !(/total\.js/i).test(m.author) : true;
+						m.community = false;
 
 					response.push.apply(response, list);
 					next();
 				});
 			};
 
-			queue.push(next => download('https://cdn.totaljs.com/flowstream/templates/db.json', next));
+			queue.push(next => download('https://cdnjs.whometa.eu/flowstream/templates/db.json', next));
 
 			queue.wait(function(fn, next) {
 				fn(next);
